@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura | Elite Habit Mastery</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Icons (Phosphor Icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Immersive Background Elements -->
+    <div class="bg-mesh"></div>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar animate-fade-down">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="ph-fill ph-infinity"></i>
+                <span>Aura</span>
+            </a>
+            <div class="nav-links">
+                <a href="#dashboard">Dashboard</a>
+                <a href="#tracker">Tracker</a>
+                <a href="#motivation">Motivation</a>
+            </div>
+            <button class="btn btn-outline glow-effect">Profile</button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <div class="badge animate-fade-up" style="--delay: 0.1s">
+                    <span class="badge-dot pulse"></span>
+                    <span>Elevate Your Daily Routine</span>
+                </div>
+                <h1 class="hero-title animate-fade-up" style="--delay: 0.2s">
+                    Master Your <span class="gradient-text animated-gradient">Habits</span>.<br>Design Your <span class="gradient-text animated-gradient">Future</span>.
+                </h1>
+                <p class="hero-subtitle animate-fade-up" style="--delay: 0.3s">
+                    A beautifully crafted, interactive platform to track your daily progress, build unbreakable streaks, and stay undeniably disciplined.
+                </p>
+                <div class="hero-actions animate-fade-up" style="--delay: 0.4s">
+                    <a href="#tracker" class="btn btn-primary btn-glow">
+                        <span>Start Tracking</span>
+                        <i class="ph-bold ph-arrow-right"></i>
+                    </a>
+                    <a href="#dashboard" class="btn btn-secondary">
+                        <i class="ph-bold ph-chart-line-up"></i>
+                        Explore Dashboard
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-visual animate-fade-in float-animation" style="--delay: 0.6s">
+                <div class="glass-card visual-card">
+                    <div class="card-header">
+                        <div class="card-header-title">
+                            <i class="ph-fill ph-check-circle text-primary"></i>
+                            <span>Consistency Check</span>
+                        </div>
+                        <div class="status-dot"></div>
+                    </div>
+                    <div class="mock-habit">
+                        <div class="mock-checkbox checked">
+                            <i class="ph-bold ph-check"></i>
+                        </div>
+                        <span class="mock-text">Morning Deep Work</span>
+                        <div class="mock-streak">🔥 14</div>
+                    </div>
+                    <div class="mock-habit">
+                        <div class="mock-checkbox"></div>
+                        <span class="mock-text text-muted">Evening Walk</span>
+                        <div class="mock-streak text-muted">🔥 10</div>
+                    </div>
+                    <div class="visual-glow"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section class="dashboard scroll-reveal" id="dashboard">
+            <div class="section-header text-center">
+                <h2>Your Progress</h2>
+                <p>Visualize your consistency and maintain your momentum.</p>
+            </div>
+            <div class="dashboard-grid">
+                <!-- Daily Progress -->
+                <div class="glass-card stat-card progress-card hover-tilt">
+                    <div class="stat-icon-wrapper text-primary">
+                        <i class="ph-fill ph-chart-donut"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Daily Completion</h3>
+                        <p class="stat-value"><span id="daily-progress-text">0</span>%</p>
+                    </div>
+                    <div class="progress-ring-container">
+                        <svg class="progress-ring" width="120" height="120">
+                            <circle class="progress-ring__circle bg" stroke="var(--surface-light)" stroke-width="8" fill="transparent" r="50" cx="60" cy="60"/>
+                            <circle class="progress-ring__circle progress" id="circular-progress" stroke="url(#gradient)" stroke-width="8" fill="transparent" r="50" cx="60" cy="60" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="var(--primary)" />
+                                    <stop offset="100%" stop-color="var(--accent)" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <i class="ph-fill ph-target ring-icon text-accent"></i>
+                    </div>
+                </div>
+
+                <div class="stats-column">
+                    <!-- Streaks -->
+                    <div class="glass-card stat-card mini-card hover-tilt">
+                         <div class="stat-icon-wrapper text-orange orange-glow">
+                            <i class="ph-fill ph-fire"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Current Streak</h3>
+                            <div class="stat-value-group">
+                                <span class="stat-value" id="current-streak">0</span>
+                                <span class="text-sm text-muted">Days</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card stat-card mini-card hover-tilt">
+                         <div class="stat-icon-wrapper text-yellow yellow-glow">
+                            <i class="ph-fill ph-crown"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Best Streak</h3>
+                            <div class="stat-value-group">
+                                <span class="stat-value" id="best-streak">0</span>
+                                <span class="text-sm text-muted">Days</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Habit Tracker Section -->
+        <section class="tracker scroll-reveal" id="tracker">
+            <div class="glass-card tracker-container">
+                <div class="tracker-header">
+                    <div>
+                        <h2>Daily Habits</h2>
+                        <p class="subtitle">Stay on track, one habit at a time.</p>
+                    </div>
+                    <div class="date-badge">
+                        <i class="ph-bold ph-calendar-blank"></i>
+                        <span id="current-date">Today</span>
+                    </div>
+                </div>
+                
+                <form id="add-habit-form" class="add-habit-form">
+                    <div class="input-group">
+                        <input type="text" id="habit-input" placeholder="What habit do you want to build?" autocomplete="off" required>
+                        <div class="input-highlight"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-icon">
+                        <i class="ph-bold ph-plus"></i>
+                        <span>Add Habit</span>
+                    </button>
+                </form>
+
+                <div class="habits-list" id="habits-list">
+                    <!-- Habits will be rendered here via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Motivation Section -->
+        <section class="motivation scroll-reveal" id="motivation">
+            <div class="section-header text-center">
+                <h2>Daily Inspiration</h2>
+                <p>Fuel for your discipline and persistence.</p>
+            </div>
+            <div class="quotes-grid">
+                <div class="glass-card quote-card hover-elevate">
+                    <div class="quote-glow" style="background: var(--primary);"></div>
+                    <i class="ph-fill ph-quotes text-primary quote-icon"></i>
+                    <p class="quote-text">"We are what we repeatedly do. Excellence, then, is not an act, but a habit."</p>
+                    <div class="quote-footer">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, var(--primary), var(--secondary));">W</div>
+                        <p class="quote-author">Will Durant</p>
+                    </div>
+                </div>
+                <div class="glass-card quote-card hover-elevate">
+                    <div class="quote-glow" style="background: var(--accent);"></div>
+                    <i class="ph-fill ph-quotes text-accent quote-icon"></i>
+                    <p class="quote-text">"Success is the product of daily habits—not once-in-a-lifetime transformations."</p>
+                    <div class="quote-footer">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, var(--accent), var(--secondary));">J</div>
+                        <p class="quote-author">James Clear</p>
+                    </div>
+                </div>
+                <div class="glass-card quote-card hover-elevate">
+                    <div class="quote-glow" style="background: var(--orange);"></div>
+                    <i class="ph-fill ph-quotes text-orange quote-icon"></i>
+                    <p class="quote-text">"Motivation is what gets you started. Habit is what keeps you going."</p>
+                    <div class="quote-footer">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, var(--orange), var(--yellow));">J</div>
+                        <p class="quote-author">Jim Ryun</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact scroll-reveal" id="contact">
+            <div class="glass-card contact-card">
+                <div class="contact-layout">
+                    <div class="contact-info">
+                        <h2>Share Your Thoughts</h2>
+                        <p>Have an idea to make Aura better? Let us know!</p>
+                        <div class="contact-details mt-4">
+                            <div class="contact-item">
+                                <div class="icon-circle">
+                                    <i class="ph-fill ph-envelope-simple"></i>
+                                </div>
+                                <div>
+                                    <span class="contact-label">Email Us</span>
+                                    <span class="contact-value">hello@aura-habits.com</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon-circle">
+                                    <i class="ph-fill ph-discord-logo"></i>
+                                </div>
+                                <div>
+                                    <span class="contact-label">Community</span>
+                                    <span class="contact-value">Join our Discord</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group flex-1">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" required class="glass-input" placeholder="John Doe">
+                            </div>
+                            <div class="form-group flex-1">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" required class="glass-input" placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="4" required class="glass-input" placeholder="Tell us what you think..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full btn-glow">
+                            <span>Send Message</span>
+                            <i class="ph-bold ph-paper-plane-tilt"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo">
+                <i class="ph-bold ph-infinity text-primary"></i>
+                <span class="font-syne">Aura</span>
+            </div>
+            <p>Designed for consistency. Built for the future.</p>
+            <div class="footer-links">
+                <a href="#"><i class="ph-fill ph-twitter-logo"></i></a>
+                <a href="#"><i class="ph-fill ph-github-logo"></i></a>
+                <a href="#"><i class="ph-fill ph-instagram-logo"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
